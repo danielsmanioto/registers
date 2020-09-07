@@ -46,8 +46,8 @@ public class UserService implements UserDetailsService {
         UserReg user = Optional.ofNullable(repository.findByLogin(username)).orElseThrow(() -> new UsernameNotFoundException("User not found"));
 
         List<GrantedAuthority> authorityListAdmin = AuthorityUtils.createAuthorityList("ROLE_USE", "ROLE_ADMIN");
-        //List<GrantedAuthority> authorityListUser = AuthorityUtils.createAuthorityList("ROLE_USE");
+        List<GrantedAuthority> authorityListUser = AuthorityUtils.createAuthorityList("ROLE_USE");
 
-        return new User(user.getLogin(), user.getPassword(), authorityListAdmin);
+        return new User(user.getLogin(), user.getPassword(), user.getAdmin() ? authorityListAdmin : authorityListUser);
     }
 }

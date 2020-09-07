@@ -28,3 +28,4 @@ http://localhost:8080/products/list
 https://spring.io/guides/gs/accessing-data-mysql/
 https://www.appsdeveloperblog.com/spring-security-default-username-password-role/#:~:text=Add%20Spring%20Security&text=The%20default%20username%20is%3A%20user,Spring%20Boot%20project%20is%20starting.
 https://www.javaguides.net/2019/04/spring-boot-thymeleaf-crud-example-tutorial.html
+https://github.com/RameshMF/springboot-thymeleaf-crud-tutorial

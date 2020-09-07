@@ -31,4 +31,10 @@ public class ProductService {
     public Iterable<Product> findAll() {
         return repository.findAll();
     }
+
+    public void deleteById(Long id) {
+        repository.deleteById(id);
+
+        log.info("Product {} deleted as success.", id);
+    }
 }
