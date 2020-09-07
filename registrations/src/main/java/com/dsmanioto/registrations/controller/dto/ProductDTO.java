@@ -1,4 +1,4 @@
-package com.dsmanioto.registrations.controller.model;
+package com.dsmanioto.registrations.controller.dto;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -9,8 +9,8 @@ import java.math.BigDecimal;
 @Setter
 public class ProductDTO {
 
+    private Long id;
     private String name;
-
     private BigDecimal price;
 
 }

@@ -1,7 +1,7 @@
 package com.dsmanioto.registrations.controller;
 
-import com.dsmanioto.registrations.controller.dto.ProductDTO;
-import com.dsmanioto.registrations.service.ProductService;
+import com.dsmanioto.registrations.controller.dto.CustomerDTO;
+import com.dsmanioto.registrations.service.CustomerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -12,36 +12,36 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
-@RequestMapping("/products")
-public class ProductController {
+@RequestMapping("/customers")
+public class CustomerController {
 
-    private final ProductService service;
+    private final CustomerService service;
 
     @Autowired
-    public ProductController(ProductService service) {
+    public CustomerController(CustomerService service) {
         this.service = service;
     }
 
     @GetMapping("/signup")
-    public String showSignUpForm(ProductDTO productDTO) {
-        return "products/add-product";
+    public String showSignUpForm(CustomerDTO customerDTO) {
+        return "customers/add-customer";
     }
 
     @PostMapping("/save")
-    public String save(@Validated ProductDTO productDTO, BindingResult result, Model model) {
+    public String save(@Validated CustomerDTO customerDTO, BindingResult result, Model model) {
         if (result.hasErrors()) {
-            return "products/add-product";
+            return "customers/add-customer";
         }
 
-        service.save(productDTO);
+        service.save(customerDTO);
 
-        return "products/saved-success";
+        return "customers/saved-success";
     }
 
     @GetMapping("/list")
     public String showUpdateForm(Model model) {
-        model.addAttribute("products", service.findAll());
-        return "products/list";
+        model.addAttribute("customers", service.findAll());
+        return "customers/list";
     }
 
 }

@@ -1,6 +1,6 @@
 package com.dsmanioto.registrations.service;
 
-import com.dsmanioto.registrations.controller.model.ProductDTO;
+import com.dsmanioto.registrations.controller.dto.ProductDTO;
 import com.dsmanioto.registrations.model.Product;
 import com.dsmanioto.registrations.repository.ProductRepository;
 import lombok.extern.slf4j.Slf4j;
