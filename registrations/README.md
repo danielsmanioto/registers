@@ -2,7 +2,8 @@
 1. Install Java14
 2. Up docker compose image in devops foulder.
 `docker-compose up --bu/ild`
-3. 
+3. go to mysql db and create database 
+4. go to mysql db and execute data.sql for insert all data  
 
 # Tecnologies
 Spring
@@ -11,12 +12,11 @@ Monolitic application
 
 # Using
 
-1. Greating
-http://localhost:8080/greeting
-http://localhost:8080/greeting?name=Daniel 
+1. Home and first test
+http://localhost:8080/home
 
 user: daniel
-password: daniel 
+password: 123 
 
 2. Product 
 
