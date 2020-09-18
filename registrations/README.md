@@ -1,14 +1,17 @@
 # Up Local application 
 1. Install Java14
 2. Up docker compose image in devops foulder.
-`docker-compose up --bu/ild`
+`docker-compose up --build`
 3. go to mysql db and create database 
 4. go to mysql db and execute data.sql for insert all data  
+5. `./mvmw clean install`
+6. `java -jar target/registrations-0.0.1-SNAPSHOT.jar`
 
 # Tecnologies
-Spring
+Spring/Spring boot/Spring security
 Java14
 Monolitic application
+Bycrpt 
 
 # Using
 
