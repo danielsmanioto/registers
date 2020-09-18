@@ -11,6 +11,8 @@
 Spring/Spring boot/Spring security
 Java14
 Monolitic application
+Thymeleaf 
+Mysql Database
 Bycrpt 
 
 # Using

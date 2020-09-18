@@ -1,8 +1,8 @@
 package com.dsmanioto.registrations.controller;
 
-import com.dsmanioto.registrations.controller.dto.CustomerDTO;
 import com.dsmanioto.registrations.controller.dto.ProductDTO;
-import com.dsmanioto.registrations.service.CustomerService;
+import com.dsmanioto.registrations.controller.dto.SalesmanDTO;
+import com.dsmanioto.registrations.service.SalesmanService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
@@ -16,32 +16,32 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import javax.validation.Valid;
 
 @Controller
-@RequestMapping("/customers")
-public class CustomerController {
+@RequestMapping("/salesmans")
+public class SalesmanController {
 
-    private  static final String PAG_CUSTOMERS_LIST = "customers/customer-list";
-    private  static final String PAG_CUSTOMERS_ADD_PRODUCT = "customer/add-customer";
+    private  static final String PAG_SALESMAN_PRODUCT_LIST = "salesmans/salesman-list";
+    private  static final String PAG_SALESMAN_ADD_PRODUCT = "salesmans/add-salesman";
 
-    private final CustomerService service;
+    private final SalesmanService service;
 
     @Autowired
-    public CustomerController(CustomerService service) {
+    public SalesmanController(SalesmanService service) {
         this.service = service;
     }
 
     @PreAuthorize("hasRole(ADMIN)")
     @GetMapping("/signup")
     public String showSignUpForm(ProductDTO productDTO) {
-        return PAG_CUSTOMERS_ADD_PRODUCT;
+        return PAG_SALESMAN_ADD_PRODUCT;
     }
 
     @PostMapping("/save")
-    public String save(@Valid CustomerDTO customerDTO, BindingResult result, Model model) {
+    public String save(@Valid SalesmanDTO salesmanDTO, BindingResult result, Model model) {
         if (result.hasErrors()) {
-            return PAG_CUSTOMERS_ADD_PRODUCT;
+            return PAG_SALESMAN_ADD_PRODUCT;
         }
 
-        service.save(customerDTO);
+        service.save(salesmanDTO);
 
         return loadListPag(model);
     }
@@ -59,9 +59,8 @@ public class CustomerController {
     }
 
     private String loadListPag(Model model) {
-        model.addAttribute("customers", service.findAll());
-        return PAG_CUSTOMERS_LIST;
+        model.addAttribute("salesmans", service.findAll());
+        return PAG_SALESMAN_PRODUCT_LIST;
     }
-
 
 }

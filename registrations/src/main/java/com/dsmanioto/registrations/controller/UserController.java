@@ -1,8 +1,9 @@
 package com.dsmanioto.registrations.controller;
 
-import com.dsmanioto.registrations.controller.dto.CustomerDTO;
 import com.dsmanioto.registrations.controller.dto.ProductDTO;
-import com.dsmanioto.registrations.service.CustomerService;
+import com.dsmanioto.registrations.controller.dto.SalesmanDTO;
+import com.dsmanioto.registrations.controller.dto.UserDTO;
+import com.dsmanioto.registrations.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
@@ -16,38 +17,38 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import javax.validation.Valid;
 
 @Controller
-@RequestMapping("/customers")
-public class CustomerController {
+@RequestMapping("/users")
+public class UserController {
 
-    private  static final String PAG_CUSTOMERS_LIST = "customers/customer-list";
-    private  static final String PAG_CUSTOMERS_ADD_PRODUCT = "customer/add-customer";
+    private  static final String PAG_USER_LIST = "users/users-list";
+    private  static final String PAG_USER_ADD_PRODUCT = "users/add-user";
 
-    private final CustomerService service;
+    private final UserService service;
 
     @Autowired
-    public CustomerController(CustomerService service) {
+    public UserController(UserService service) {
         this.service = service;
     }
 
     @PreAuthorize("hasRole(ADMIN)")
     @GetMapping("/signup")
-    public String showSignUpForm(ProductDTO productDTO) {
-        return PAG_CUSTOMERS_ADD_PRODUCT;
+    public String showSignUpForm(UserDTO userDTO) {
+        return PAG_USER_ADD_PRODUCT;
     }
 
     @PostMapping("/save")
-    public String save(@Valid CustomerDTO customerDTO, BindingResult result, Model model) {
+    public String save(@Valid UserDTO userDTO, BindingResult result, Model model) {
         if (result.hasErrors()) {
-            return PAG_CUSTOMERS_ADD_PRODUCT;
+            return PAG_USER_ADD_PRODUCT;
         }
 
-        service.save(customerDTO);
+        service.save(userDTO);
 
         return loadListPag(model);
     }
 
     @GetMapping("/delete/{id}")
-    public String deleteById(@PathVariable("id") Long id, Model model) {
+    public String deleteById(@PathVariable("id") String id, Model model) {
         service.deleteById(id);
 
         return loadListPag(model);
@@ -59,9 +60,8 @@ public class CustomerController {
     }
 
     private String loadListPag(Model model) {
-        model.addAttribute("customers", service.findAll());
-        return PAG_CUSTOMERS_LIST;
+        model.addAttribute("users", service.findAll());
+        return PAG_USER_LIST;
     }
-
 
 }

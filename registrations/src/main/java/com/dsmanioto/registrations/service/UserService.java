@@ -3,6 +3,7 @@ package com.dsmanioto.registrations.service;
 import com.dsmanioto.registrations.controller.dto.UserDTO;
 import com.dsmanioto.registrations.model.UserReg;
 import com.dsmanioto.registrations.repository.UserRepository;
+import com.dsmanioto.registrations.util.PasswordEncoder;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
@@ -30,7 +31,8 @@ public class UserService implements UserDetailsService {
     public void save(UserDTO userDTO) {
         UserReg user = UserReg.builder()
                 .login(userDTO.getLogin())
-                .password(userDTO.getPassword())
+                .password(PasswordEncoder.encoder(userDTO.getPassword()))
+                .admin(false)
                 .build();
         repository.save(user);
 
@@ -49,5 +51,10 @@ public class UserService implements UserDetailsService {
         List<GrantedAuthority> authorityListUser = AuthorityUtils.createAuthorityList("ROLE_USE");
 
         return new User(user.getLogin(), user.getPassword(), user.getAdmin() ? authorityListAdmin : authorityListUser);
+    }
+
+
+    public void deleteById(String id) {
+        repository.deleteById(id);
     }
 }
