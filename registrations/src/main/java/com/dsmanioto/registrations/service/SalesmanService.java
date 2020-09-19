@@ -20,7 +20,7 @@ public class SalesmanService {
 
     public void save(SalesmanDTO salesmanDTO) {
         Salesman salesman = Salesman.builder()
-                .nome(salesmanDTO.getNome())
+                .name(salesmanDTO.getName())
                 .email(salesmanDTO.getEmail())
                 .build();
         repository.save(salesman);

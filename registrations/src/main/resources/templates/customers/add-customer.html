@@ -11,14 +11,14 @@
 <body>
 <div class="container my-5">
 
-    <a href="/products/signup">Home</a>
+    <a href="/home">Home</a>
 
-    <h3>Add Product</h3>
+    <h3>Add Customer</h3>
 
     <div class="card">
         <div class="card-body">
             <div class="col-md-10">
-                <form action="#" th:action="@{/products/save}" th:object="${productDTO}" method="post">
+                <form action="#" th:action="@{/customers/save}" th:object="${customerDTO}" method="post">
                     <div class="row">
 
                         <!--Name-->
@@ -30,16 +30,16 @@
                                 class="text-danger"></span>
                         </div>
 
-                        <!--Price-->
+                        <!--Email-->
                         <div class="form-group col-md-8">
-                            <label for="price" class="col-form-label">Price</label> <input
-                                type="text" th:field="*{price}" class="form-control"
-                                id="price" placeholder="Price"> <span
-                                th:if="${#fields.hasErrors('price')}" th:errors="*{price}"
+                            <label for="email" class="col-form-label">Email</label> <input
+                                type="text" th:field="*{email}" class="form-control"
+                                id="email" placeholder="Email"> <span
+                                th:if="${#fields.hasErrors('email')}" th:errors="*{email}"
                                 class="text-danger"></span>
                         </div>
 
-                        <!-- Salvar -->
+                        <!-- Save -->
                         <div class="col-md-6">
                             <input type="submit" class="btn btn-primary" value="Save">
                         </div>

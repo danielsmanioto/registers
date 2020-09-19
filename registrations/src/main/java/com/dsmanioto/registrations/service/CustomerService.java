@@ -20,7 +20,7 @@ public class CustomerService {
 
     public void save(CustomerDTO customerDTO) {
         Customer customer = Customer.builder()
-                .nome(customerDTO.getNome())
+                .name(customerDTO.getName())
                 .email(customerDTO.getEmail())
                 .build();
         repository.save(customer);

@@ -1,7 +1,6 @@
 package com.dsmanioto.registrations.controller;
 
 import com.dsmanioto.registrations.controller.dto.CustomerDTO;
-import com.dsmanioto.registrations.controller.dto.ProductDTO;
 import com.dsmanioto.registrations.service.CustomerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
@@ -20,7 +19,7 @@ import javax.validation.Valid;
 public class CustomerController {
 
     private  static final String PAG_CUSTOMERS_LIST = "customers/customer-list";
-    private  static final String PAG_CUSTOMERS_ADD_PRODUCT = "customer/add-customer";
+    private  static final String PAG_CUSTOMERS_ADD_CUSTOMER = "customers/add-customer";
 
     private final CustomerService service;
 
@@ -31,14 +30,14 @@ public class CustomerController {
 
     @PreAuthorize("hasRole(ADMIN)")
     @GetMapping("/signup")
-    public String showSignUpForm(ProductDTO productDTO) {
-        return PAG_CUSTOMERS_ADD_PRODUCT;
+    public String showSignUpForm(CustomerDTO customerDTO) {
+        return PAG_CUSTOMERS_ADD_CUSTOMER;
     }
 
     @PostMapping("/save")
     public String save(@Valid CustomerDTO customerDTO, BindingResult result, Model model) {
         if (result.hasErrors()) {
-            return PAG_CUSTOMERS_ADD_PRODUCT;
+            return PAG_CUSTOMERS_ADD_CUSTOMER;
         }
 
         service.save(customerDTO);
@@ -62,6 +61,5 @@ public class CustomerController {
         model.addAttribute("customers", service.findAll());
         return PAG_CUSTOMERS_LIST;
     }
-
 
 }
