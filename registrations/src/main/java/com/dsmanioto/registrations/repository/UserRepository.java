@@ -7,4 +7,5 @@ public interface UserRepository extends CrudRepository<UserReg, String> {
 
     UserReg findByLogin(String login);
 
+    void deleteByLogin(String login);
 }

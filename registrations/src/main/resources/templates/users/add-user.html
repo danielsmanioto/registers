@@ -33,20 +33,11 @@
                         <!--Password-->
                         <div class="form-group col-md-8">
                             <label for="password" class="col-form-label">Password</label> <input
-                                type="text" th:field="*{password}" class="form-control" id="password"
+                                type="password" th:field="*{password}" class="form-control" id="password"
                                 placeholder="Password"> <span
                                 th:if="${#fields.hasErrors('password')}" th:errors="*{password}"
                                 class="text-danger"></span>
                         </div>
-
-                        <!--admin
-                        <div class="form-group col-md-8">
-                            <label for="admin" class="col-form-label">Admin</label> <input
-                                type="text" th:field="*{admin}" class="form-control"
-                                id="admin" placeholder="Admin"> <span
-                                th:if="${#fields.hasErrors('admin')}" th:errors="*{admin}"
-                                class="text-danger"></span>
-                        </div>-->
 
                         <!-- Save -->
                         <div class="col-md-6">

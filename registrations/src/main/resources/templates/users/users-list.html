@@ -26,19 +26,17 @@
                                 <thead>
                                 <tr>
                                     <th>Login</th>
-                                    <th>Password</th>
                                     <th>Admin</th>
-                                    <!--<th>Edit</th>-->
+                                    <th>Reset Password</th>
                                     <th>Delete</th>
                                 </tr>
                                 </thead>
                                 <tbody>
                                 <tr th:each="user : ${users}">
                                     <td th:text="${user.login}"></td>
-                                    <td th:text="${user.password}"></td>
                                     <td th:text="${user.admin}"></td>
-                                   <!-- <td><a th:href="@{/students/edit/{id}(id=${product.id})}" class="btn btn-primary"><i class="fas fa-user-edit ml-2"></i></a></td>-->
-                                    <td><a th:href="@{/user/delete/{login}(id=${user.login})}" class="btn btn-primary"><i class="fas fa-user-times ml-2"></i></a></td>
+                                   <td><a th:href="@{/users/reset-password/{login}(login=${user.login})}" class="btn btn-primary"><i class="fas fa-user-edit ml-2"></i></a></td>
+                                   <td><a th:href="@{/users/delete/{login}(login=${user.login})}" class="btn btn-primary"><i class="fas fa-user-times ml-2"></i></a></td>
                                 </tr>
                                 </tbody>
                             </table>

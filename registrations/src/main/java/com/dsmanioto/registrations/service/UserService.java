@@ -39,7 +39,7 @@ public class UserService implements UserDetailsService {
         log.info("User save as success {}", user);
     }
 
-    public  Iterable<UserReg> findAll() {
+    public Iterable<UserReg> findAll() {
         return repository.findAll();
     }
 
@@ -53,8 +53,18 @@ public class UserService implements UserDetailsService {
         return new User(user.getLogin(), user.getPassword(), user.getAdmin() ? authorityListAdmin : authorityListUser);
     }
 
-
-    public void deleteById(String id) {
-        repository.deleteById(id);
+    public void deleteByLogin(String login) {
+        repository.deleteById(login);
     }
+
+    public void resetPassword(String login) {
+        UserReg user = Optional.ofNullable(repository.findByLogin(login)).orElseThrow(() -> new UsernameNotFoundException("User not found"));
+        user.setPassword(PasswordEncoder.encoder(getDefaultPassword()));
+        repository.save(user);
+    }
+
+    private String getDefaultPassword() {
+        return "chamge-me";
+    }
+
 }

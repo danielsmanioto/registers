@@ -1,7 +1,5 @@
 package com.dsmanioto.registrations.controller;
 
-import com.dsmanioto.registrations.controller.dto.ProductDTO;
-import com.dsmanioto.registrations.controller.dto.SalesmanDTO;
 import com.dsmanioto.registrations.controller.dto.UserDTO;
 import com.dsmanioto.registrations.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -47,9 +45,9 @@ public class UserController {
         return loadListPag(model);
     }
 
-    @GetMapping("/delete/{id}")
-    public String deleteById(@PathVariable("id") String id, Model model) {
-        service.deleteById(id);
+    @GetMapping("/delete/{login}")
+    public String deleteById(@PathVariable("login") String login, Model model) {
+        service.deleteByLogin(login);
 
         return loadListPag(model);
     }
@@ -59,9 +57,14 @@ public class UserController {
         return loadListPag(model);
     }
 
+    @GetMapping("/reset-password/{login}")
+    public String resetPassword(@PathVariable("login") String login, Model model) {
+        service.resetPassword(login);
+        return loadListPag(model);
+    }
+
     private String loadListPag(Model model) {
         model.addAttribute("users", service.findAll());
         return PAG_USER_LIST;
     }
-
 }
