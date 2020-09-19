@@ -8,12 +8,14 @@
 6. `java -jar target/registrations-0.0.1-SNAPSHOT.jar`
 
 # Tecnologies
-Spring/Spring boot/Spring security
-Java14
-Monolitic application
-Thymeleaf 
-Mysql Database
-Bycrpt 
+<ul>
+    <li>Spring/Spring boot/Spring security</li>
+    <li>Java14</li>
+    <li>Monolitic application</li>
+    <li>Thymeleaf </li>
+    <li>MySQL Database</li>
+    <li>Bycrpt </li>
+</ul>
 
 # Using
 
