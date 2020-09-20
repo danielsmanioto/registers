@@ -7,49 +7,46 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css" integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz" crossorigin="anonymous">
-    <!-- <link rel="stylesheet" href="../css/shards.min.css"> -->
 </head>
 <body>
-    <a href="/home">Voltar para home</a>
+<a href="/home">Voltar para home</a>
 
-    <div class="container my-2">
-        <div class="card">
-            <div class="card-body">
-                <div th:switch="${products}" class="container my-5">
-                    <p class="my-5">
-                        <a href="/products/signup" class="btn btn-primary"><i
-                                class="fas fa-user-plus ml-2"> Add Student</i></a>
-                    </p>
-                    <div class="col-md-10">
-                        <h2 th:case="null">No Students yet!</h2>
-                        <div th:case="*">
-                            <table class="table table-striped table-responsive-md">
-                                <thead>
-                                <tr>
-                                    <th>Id</th>
-                                    <th>Name</th>
-                                    <th>Price</th>
-                                    <!--<th>Edit</th>-->
-                                    <th>Delete</th>
-                                </tr>
-                                </thead>
-                                <tbody>
-                                <tr th:each="product : ${products}">
-                                    <td th:text="${product.id}"></td>
-                                    <td th:text="${product.name}"></td>
-                                    <td th:text="${product.price}"></td>
-                                   <!-- <td><a th:href="@{/students/edit/{id}(id=${product.id})}" class="btn btn-primary"><i class="fas fa-user-edit ml-2"></i></a></td>-->
-                                    <td><a th:href="@{/products/delete/{id}(id=${product.id})}" class="btn btn-primary"><i class="fas fa-user-times ml-2"></i></a></td>
-                                </tr>
-                                </tbody>
-                            </table>
-                        </div>
-
+<div class="container my-2">
+    <div class="card">
+        <div class="card-body">
+            <div th:switch="${salesmans}" class="container my-5">
+                <p class="my-5">
+                    <a href="/salesmans/signup" class="btn btn-primary"><i
+                            class="fas fa-user-plus ml-2"> Add Salesman</i></a>
+                </p>
+                <div class="col-md-10">
+                    <h2 th:case="null">No sales yet!</h2>
+                    <div th:case="*">
+                        <table class="table table-striped table-responsive-md">
+                            <thead>
+                            <tr>
+                                <th>Id</th>
+                                <th>Name</th>
+                                <th>Email</th>
+                                <th>Delete</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr th:each="salesman : ${salesmans}">
+                                <td th:text="${salesman.id}"></td>
+                                <td th:text="${salesman.name}"></td>
+                                <td th:text="${salesman.email}"></td>
+                                <td><a th:href="@{/salesmans/delete/{id}(id=${salesman.id})}" class="btn btn-primary"><i class="fas fa-user-times ml-2"></i></a></td>
+                            </tr>
+                            </tbody>
+                        </table>
                     </div>
+
                 </div>
             </div>
         </div>
     </div>
+</div>
 </body>
 </html>
 

@@ -20,7 +20,7 @@ import javax.validation.Valid;
 public class SalesmanController {
 
     private  static final String PAG_SALESMAN_PRODUCT_LIST = "salesmans/salesman-list";
-    private  static final String PAG_SALESMAN_ADD_PRODUCT = "salesmans/add-salesman";
+    private  static final String PAG_SALESMAN_ADD_SALESMAN = "salesmans/add-salesman";
 
     private final SalesmanService service;
 
@@ -31,14 +31,14 @@ public class SalesmanController {
 
     @PreAuthorize("hasRole(ADMIN)")
     @GetMapping("/signup")
-    public String showSignUpForm(ProductDTO productDTO) {
-        return PAG_SALESMAN_ADD_PRODUCT;
+    public String showSignUpForm(SalesmanDTO salesmanDTO) {
+        return PAG_SALESMAN_ADD_SALESMAN;
     }
 
     @PostMapping("/save")
     public String save(@Valid SalesmanDTO salesmanDTO, BindingResult result, Model model) {
         if (result.hasErrors()) {
-            return PAG_SALESMAN_ADD_PRODUCT;
+            return PAG_SALESMAN_ADD_SALESMAN;
         }
 
         service.save(salesmanDTO);
