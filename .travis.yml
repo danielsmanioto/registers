@@ -2,6 +2,8 @@
 language: java
 jdk:
   - openjdk14
-script: cd registrations && ./mvnw clean install
+before_install:
+  - cd registrations
+script: ./mvnw clean install
 notifications:
   email: daniel.smanioto@gmail.com
