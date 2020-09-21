@@ -30,6 +30,11 @@ password: 123
 http://localhost:8080/products/signup
 http://localhost:8080/products/list
 
+
+# CI & CD
+
+https://travis-ci.com/
+
 # References
 
 https://spring.io/guides/gs/accessing-data-mysql/

@@ -1,0 +1,9 @@
+ 
+language: java
+jdk:
+  - openjdk14
+before_install:
+  - cd registrations
+script: ./mvnw clean install -DskipTests
+notifications:
+  email: daniel.smanioto@gmail.com
