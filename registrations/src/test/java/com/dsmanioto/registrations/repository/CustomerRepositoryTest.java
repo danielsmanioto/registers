@@ -50,9 +50,9 @@ public class CustomerRepositoryTest {
 
     @Test
     public void validateUpdateName() {
-        repository.save(getCustomer());
+        final Customer customerSaved = repository.save(getCustomer());
 
-        Optional<Customer> customer = repository.findById(1L);
+        Optional<Customer> customer = repository.findById(customerSaved.getId());
         Assertions.assertEquals(1L, customer.get().getId());
         Assertions.assertEquals("Daniel", customer.get().getName());
 
