@@ -4,6 +4,6 @@ jdk:
   - openjdk14
 before_install:
   - cd registrations
-script: ./mvnw clean install -DskipTests
+script: ./mvnw clean install
 notifications:
   email: daniel.smanioto@gmail.com
