@@ -8,43 +8,55 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.ActiveProfiles;
 
 import java.util.Optional;
+import java.util.Random;
 
 @SpringBootTest
 @ActiveProfiles("local")
 public class CustomerRepositoryTest {
 
+    private final CustomerRepository repository;
+
     @Autowired
-    private CustomerRepository repository;
+    public CustomerRepositoryTest(CustomerRepository repository) {
+        this.repository = repository;
+    }
 
     @Test
     public void validateSaveSuccess() {
         final Customer customerSaved = repository.save(createCustomer("Daniel"));
-        Assertions.assertEquals(1L, customerSaved.getId());
-        Assertions.assertEquals("Daniel", customerSaved.getName());
-        Assertions.assertEquals("daniel@alksjdklajsdqe.com", customerSaved.getEmail());
+        validateAllFields(customerSaved, customerSaved);
     }
 
     @Test
     public void validateFindById() {
         final Customer customerSaved = repository.save(createCustomer("Daniel"));
 
-        Optional<Customer> customer = repository.findById(1L);
-
-        Assertions.assertEquals(1L, customer.get().getId());
-        Assertions.assertEquals("Daniel", customer.get().getName());
-        Assertions.assertEquals("daniel@alksjdklajsdqe.com", customer.get().getEmail());
+        Optional<Customer> customer = repository.findById(customerSaved.getId());
+        validateAllFields(customerSaved, customer.get());
     }
 
     @Test
     public void validateDeleteById() {
-        repository.save(createCustomer("Daniel"));
+        final Customer customerSaved = repository.save(createCustomer("Daniel"));
 
-        Optional<Customer> customer = repository.findById(1L);
-        Assertions.assertEquals(1L, customer.get().getId());
-        Assertions.assertEquals("Daniel", customer.get().getName());
+        Optional<Customer> customer = repository.findById(customerSaved.getId());
+        Assertions.assertEquals(customerSaved.getId(), customer.get().getId());
+        Assertions.assertEquals(customerSaved.getName(), customer.get().getName());
 
-        repository.deleteById(1L);
-        customer = repository.findById(1L);
+        repository.deleteById(customerSaved.getId());
+        customer = repository.findById(customerSaved.getId());
+        org.assertj.core.api.Assertions.assertThat(customer).isEmpty();
+    }
+
+    @Test
+    public void validateDelete() {
+        final Customer customerSaved = repository.save(createCustomer("Daniel"));
+
+        Optional<Customer> customer = repository.findById(customerSaved.getId());
+        validateAllFields(customerSaved, customerSaved);
+
+        repository.delete(customer.get());
+        customer = repository.findById(customerSaved.getId());
         org.assertj.core.api.Assertions.assertThat(customer).isEmpty();
     }
 
@@ -53,8 +65,7 @@ public class CustomerRepositoryTest {
         final Customer customerSaved = repository.save(createCustomer("Daniel"));
 
         Optional<Customer> customer = repository.findById(customerSaved.getId());
-        Assertions.assertEquals(customerSaved.getId(), customer.get().getId());
-        Assertions.assertEquals("Daniel", customer.get().getName());
+        validateAllFields(customerSaved, customerSaved);
 
         Customer customerToUpdate = customer.get();
         customerToUpdate.setName("Carol");
@@ -65,10 +76,16 @@ public class CustomerRepositoryTest {
 
     private Customer createCustomer(String name) {
         return Customer.builder()
-                .id(1L)
+                .id(new Random().nextLong())
                 .name(name)
-                .email("daniel@alksjdklajsdqe.com")
+                .email(name + ".personal@smanioto.com")
                 .build();
+    }
+
+    private void validateAllFields(Customer customerSaved, Customer customerSaved2) {
+        Assertions.assertEquals(customerSaved.getId(), customerSaved2.getId());
+        Assertions.assertEquals(customerSaved.getName(), customerSaved2.getName());
+        Assertions.assertEquals(customerSaved.getEmail(), customerSaved2.getEmail());
     }
 
 }
