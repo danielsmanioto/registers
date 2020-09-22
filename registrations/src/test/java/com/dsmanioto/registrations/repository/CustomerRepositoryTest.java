@@ -53,7 +53,7 @@ public class CustomerRepositoryTest {
         final Customer customerSaved = repository.save(getCustomer());
 
         Optional<Customer> customer = repository.findById(customerSaved.getId());
-        Assertions.assertEquals(1L, customer.get().getId());
+        Assertions.assertEquals(customerSaved.getId(), customer.get().getId());
         Assertions.assertEquals("Daniel", customer.get().getName());
 
         Customer customerToUpdate = customer.get();
