@@ -18,7 +18,7 @@ public class CustomerRepositoryTest {
 
     @Test
     public void validateSaveSuccess() {
-        final Customer customerSaved = repository.save(getCustomer());
+        final Customer customerSaved = repository.save(createCustomer("Daniel"));
         Assertions.assertEquals(1L, customerSaved.getId());
         Assertions.assertEquals("Daniel", customerSaved.getName());
         Assertions.assertEquals("daniel@alksjdklajsdqe.com", customerSaved.getEmail());
@@ -26,7 +26,7 @@ public class CustomerRepositoryTest {
 
     @Test
     public void validateFindById() {
-        final Customer customerSaved = repository.save(getCustomer());
+        final Customer customerSaved = repository.save(createCustomer("Daniel"));
 
         Optional<Customer> customer = repository.findById(1L);
 
@@ -37,7 +37,7 @@ public class CustomerRepositoryTest {
 
     @Test
     public void validateDeleteById() {
-        repository.save(getCustomer());
+        repository.save(createCustomer("Daniel"));
 
         Optional<Customer> customer = repository.findById(1L);
         Assertions.assertEquals(1L, customer.get().getId());
@@ -50,7 +50,7 @@ public class CustomerRepositoryTest {
 
     @Test
     public void validateUpdateName() {
-        final Customer customerSaved = repository.save(getCustomer());
+        final Customer customerSaved = repository.save(createCustomer("Daniel"));
 
         Optional<Customer> customer = repository.findById(customerSaved.getId());
         Assertions.assertEquals(customerSaved.getId(), customer.get().getId());
@@ -60,13 +60,13 @@ public class CustomerRepositoryTest {
         customerToUpdate.setName("Carol");
         repository.save(customerToUpdate);
 
-        Assertions.assertEquals("Carol", repository.findById(1L).get().getName());
+        Assertions.assertEquals("Carol", repository.findById(customerSaved.getId()).get().getName());
     }
 
-    private Customer getCustomer() {
+    private Customer createCustomer(String name) {
         return Customer.builder()
                 .id(1L)
-                .name("Daniel")
+                .name(name)
                 .email("daniel@alksjdklajsdqe.com")
                 .build();
     }
