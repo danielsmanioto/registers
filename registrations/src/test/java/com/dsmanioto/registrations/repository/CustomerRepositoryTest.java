@@ -8,7 +8,6 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.ActiveProfiles;
 
 import java.util.Optional;
-import java.util.Random;
 
 @SpringBootTest
 @ActiveProfiles("local")
@@ -23,8 +22,9 @@ public class CustomerRepositoryTest {
 
     @Test
     public void validateSaveSuccess() {
-        final Customer customerSaved = repository.save(createCustomer("Daniel"));
-        validateAllFields(customerSaved, customerSaved);
+        final Customer customer = createCustomer("Daniel");
+        final Customer customerSaved = repository.save(customer);
+        validateAllFields(customerSaved, customer);
     }
 
     @Test
@@ -40,8 +40,7 @@ public class CustomerRepositoryTest {
         final Customer customerSaved = repository.save(createCustomer("Daniel"));
 
         Optional<Customer> customer = repository.findById(customerSaved.getId());
-        Assertions.assertEquals(customerSaved.getId(), customer.get().getId());
-        Assertions.assertEquals(customerSaved.getName(), customer.get().getName());
+        validateAllFields(customerSaved, customer.get());
 
         repository.deleteById(customerSaved.getId());
         customer = repository.findById(customerSaved.getId());
@@ -76,16 +75,14 @@ public class CustomerRepositoryTest {
 
     private Customer createCustomer(String name) {
         return Customer.builder()
-                .id(new Random().nextLong())
                 .name(name)
                 .email(name + ".personal@smanioto.com")
                 .build();
     }
 
-    private void validateAllFields(Customer customerSaved, Customer customerSaved2) {
-        Assertions.assertEquals(customerSaved.getId(), customerSaved2.getId());
-        Assertions.assertEquals(customerSaved.getName(), customerSaved2.getName());
-        Assertions.assertEquals(customerSaved.getEmail(), customerSaved2.getEmail());
+    private void validateAllFields(Customer customerSaved, Customer customer) {
+        Assertions.assertEquals(customerSaved.getName(), customer.getName());
+        Assertions.assertEquals(customerSaved.getEmail(), customer.getEmail());
     }
 
 }
