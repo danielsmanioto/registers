@@ -30,12 +30,13 @@ public class UserRepositoryTest {
 
     @Test
     public void validateFindAllUsers() {
-        repository.save(createUser("danielsmanioto", "daniel"));
-        repository.save(createUser("carolsmanioto", "daniel"));
-        repository.save(createUser("dsmanioto", "daniel"));
-        List<UserReg> users = (List<UserReg>) repository.findAll();
+        int qtdeDataBefore = repository.findAll().size();
+        repository.save(createUser("user1", "daniel"));
+        repository.save(createUser("user2", "daniel"));
+        repository.save(createUser("user3", "daniel"));
+        List<UserReg> users = repository.findAll();
 
-        Assertions.assertEquals(3, users.size());
+        Assertions.assertEquals(3 + qtdeDataBefore, users.size());
     }
 
     private void validateFields(UserReg user, UserReg userSaved) {

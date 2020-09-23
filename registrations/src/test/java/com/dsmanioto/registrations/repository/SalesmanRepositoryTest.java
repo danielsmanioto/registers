@@ -67,6 +67,7 @@ public class SalesmanRepositoryTest {
 
     @Test
     public void validateTestAllSort() {
+        int qtdeDataBefore = repository.findAll().size();
         repository.save(createSalesman("Daniel"));
         repository.save(createSalesman("Daniela"));
         repository.save(createSalesman("Carol"));
@@ -75,8 +76,8 @@ public class SalesmanRepositoryTest {
         repository.save(createSalesman("Eutalia"));
         repository.save(createSalesman("Anta"));
 
-        List<Salesman> salesmans = (List<Salesman>) repository.findAll(Sort.by("name"));
-        Assertions.assertEquals(7, salesmans.size());
+        List<Salesman> salesmans = repository.findAll(Sort.by("name"));
+        Assertions.assertEquals(7 + qtdeDataBefore, salesmans.size());
         Assertions.assertEquals("Anta", salesmans.get(0).getName());
     }
 
