@@ -16,6 +16,7 @@ public class ProductDTO {
 
     public Product convertToModel() {
         return Product.builder()
+                .id(this.id)
                 .name(this.name)
                 .price(this.price)
                 .build();
