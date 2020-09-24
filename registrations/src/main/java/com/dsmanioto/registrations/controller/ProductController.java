@@ -37,7 +37,7 @@ public class ProductController {
             return PAG_PRODUCTS_ADD_PRODUCT;
         }
 
-        service.save(productDTO);
+        service.save(productDTO.convertToModel());
 
         return loadListPag(model);
     }
