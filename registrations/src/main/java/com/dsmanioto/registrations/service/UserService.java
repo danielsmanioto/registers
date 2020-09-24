@@ -1,6 +1,5 @@
 package com.dsmanioto.registrations.service;
 
-import com.dsmanioto.registrations.controller.dto.UserDTO;
 import com.dsmanioto.registrations.model.UserReg;
 import com.dsmanioto.registrations.repository.UserRepository;
 import com.dsmanioto.registrations.util.PasswordEncoder;
@@ -21,6 +20,8 @@ import java.util.Optional;
 @Service
 public class UserService implements UserDetailsService {
 
+    private static final String PASSWORD_DEFAULT = "chamge-me";
+
     private final UserRepository repository;
 
     @Autowired
@@ -28,18 +29,13 @@ public class UserService implements UserDetailsService {
         this.repository = repository;
     }
 
-    public void save(UserDTO userDTO) {
-        UserReg user = UserReg.builder()
-                .login(userDTO.getLogin())
-                .password(PasswordEncoder.encoder(userDTO.getPassword()))
-                .admin(false)
-                .build();
+    public void save(UserReg user) {
         repository.save(user);
 
         log.info("User save as success {}", user);
     }
 
-    public Iterable<UserReg> findAll() {
+    public List<UserReg> findAll() {
         return repository.findAll();
     }
 
@@ -64,7 +60,7 @@ public class UserService implements UserDetailsService {
     }
 
     private String getDefaultPassword() {
-        return "chamge-me";
+        return PASSWORD_DEFAULT;
     }
 
 }
