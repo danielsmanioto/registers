@@ -1,6 +1,6 @@
 package com.dsmanioto.registrations.config;
 
-import com.dsmanioto.registrations.service.UserService;
+import com.dsmanioto.registrations.auth.UserAuthentication;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -11,12 +11,13 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 @EnableWebSecurity
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
-    private final UserService userService;
+    private final UserAuthentication userAuthentication;
 
     @Autowired
-    public SecurityConfig(UserService userService) {
-        this.userService = userService;
+    public SecurityConfig(UserAuthentication userAuthentication) {
+        this.userAuthentication = userAuthentication;
     }
+
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
@@ -29,7 +30,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-        auth.userDetailsService(userService).passwordEncoder(new BCryptPasswordEncoder());
+        auth.userDetailsService(userAuthentication).passwordEncoder(new BCryptPasswordEncoder());
     }
 
 }

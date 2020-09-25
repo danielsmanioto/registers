@@ -5,11 +5,6 @@ import com.dsmanioto.registrations.repository.UserRepository;
 import com.dsmanioto.registrations.util.PasswordEncoder;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.GrantedAuthority;
-import org.springframework.security.core.authority.AuthorityUtils;
-import org.springframework.security.core.userdetails.User;
-import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
@@ -18,9 +13,9 @@ import java.util.Optional;
 
 @Slf4j
 @Service
-public class UserService implements UserDetailsService {
+public class UserService {
 
-    private static final String PASSWORD_DEFAULT = "chamge-me";
+    private static final String PASSWORD_DEFAULT = "change-me";
 
     private final UserRepository repository;
 
@@ -37,16 +32,6 @@ public class UserService implements UserDetailsService {
 
     public List<UserReg> findAll() {
         return repository.findAll();
-    }
-
-    @Override
-    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        UserReg user = Optional.ofNullable(repository.findByLogin(username)).orElseThrow(() -> new UsernameNotFoundException("User not found"));
-
-        List<GrantedAuthority> authorityListAdmin = AuthorityUtils.createAuthorityList("ROLE_USE", "ROLE_ADMIN");
-        List<GrantedAuthority> authorityListUser = AuthorityUtils.createAuthorityList("ROLE_USE");
-
-        return new User(user.getLogin(), user.getPassword(), user.getAdmin() ? authorityListAdmin : authorityListUser);
     }
 
     public void deleteByLogin(String login) {
