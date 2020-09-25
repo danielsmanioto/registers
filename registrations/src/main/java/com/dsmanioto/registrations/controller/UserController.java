@@ -40,7 +40,7 @@ public class UserController {
             return PAG_USER_ADD_PRODUCT;
         }
 
-        service.save(userDTO);
+        service.save(userDTO.convertToModel());
 
         return loadListPag(model);
     }

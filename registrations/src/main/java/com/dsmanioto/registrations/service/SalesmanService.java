@@ -1,11 +1,12 @@
 package com.dsmanioto.registrations.service;
 
-import com.dsmanioto.registrations.controller.dto.SalesmanDTO;
 import com.dsmanioto.registrations.model.Salesman;
 import com.dsmanioto.registrations.repository.SalesmanRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 @Slf4j
 @Service
@@ -18,17 +19,13 @@ public class SalesmanService {
         this.repository = repository;
     }
 
-    public void save(SalesmanDTO salesmanDTO) {
-        Salesman salesman = Salesman.builder()
-                .name(salesmanDTO.getName())
-                .email(salesmanDTO.getEmail())
-                .build();
+    public void save(Salesman salesman) {
         repository.save(salesman);
 
         log.info("Salesman save as success {}", salesman);
     }
 
-    public  Iterable<Salesman> findAll() {
+    public List<Salesman> findAll() {
         return repository.findAll();
     }
 

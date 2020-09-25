@@ -41,7 +41,7 @@ public class SalesmanController {
             return PAG_SALESMAN_ADD_SALESMAN;
         }
 
-        service.save(salesmanDTO);
+        service.save(salesmanDTO.convertToModel());
 
         return loadListPag(model);
     }

@@ -40,7 +40,7 @@ public class CustomerController {
             return PAG_CUSTOMERS_ADD_CUSTOMER;
         }
 
-        service.save(customerDTO);
+        service.save(customerDTO.convertoToModel());
 
         return loadListPag(model);
     }
