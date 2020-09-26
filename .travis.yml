@@ -3,5 +3,9 @@ language: java
 jdk:
   - openjdk14
 script: ./mvnw clean install
+branches:
+  only:
+  - master
+  - develop
 notifications:
   email: daniel.smanioto@gmail.com
