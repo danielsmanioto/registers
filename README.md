@@ -23,8 +23,8 @@ production(application.properties): heroku tomcat + mysql hostgator
 
 # LOCAL ENVIROMENT 
 
-5. `./mvmw clean install`
-6. `java -jar -Dspring.profiles.active=local target/registrations-0.0.1-SNAPSHOT.jar`
+1. `./mvmw clean install`
+2. `java -jar -Dspring.profiles.active=local target/registrations-0.0.1-SNAPSHOT.jar`
 
 # DEV ENVIROMENT 
 
@@ -39,8 +39,8 @@ production(application.properties): heroku tomcat + mysql hostgator
 
 # HOMOLOG ENVIROMENT 
 
-5. `./mvmw clean install`
-6. `java -jar -Dspring.profiles.active=homolog target/registrations-0.0.1-SNAPSHOT.jar`
+1. `./mvmw clean install`
+2. `java -jar -Dspring.profiles.active=homolog target/registrations-0.0.1-SNAPSHOT.jar`
 
 # Using
 
