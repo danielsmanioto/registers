@@ -21,6 +21,13 @@ this projecs is only a monolitic system to registers and mantain all data
     <li>Bycrpt </li>
 </ul>
 
+# Enviroments 
+
+local : jar / tomcat + h2 database
+development : jar / tomcat + docker with mysql
+homolog: java / tomvcat local + mysql aws 
+production: heroku tomcat + mysql hostgator  
+
 # Using
 
 1. Home and first test
