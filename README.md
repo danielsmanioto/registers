@@ -2,14 +2,6 @@ Monolitic Java 14 application
 for simulate a litle store.
 
 this projecs is only a monolitic system to registers and mantain all data 
-# Up dev application with banco in docker 
-1. Install Java14
-2. Up docker compose image in devops foulder.
-`docker-compose up --build`
-3. go to mysql db and create database 
-4. go to mysql db and execute data.sql for insert all data  
-5. `./mvmw clean install`
-6. `java -jar -Dspring.profiles.active=development target/registrations-0.0.1-SNAPSHOT.jar`
 
 # Tecnologies
 <ul>
@@ -21,12 +13,34 @@ this projecs is only a monolitic system to registers and mantain all data
     <li>Bycrpt </li>
 </ul>
 
+
 # Enviroments 
 
 local : jar / tomcat + h2 database
 development : jar / tomcat + docker with mysql
 homolog: java / tomvcat local + mysql aws 
-production: heroku tomcat + mysql hostgator  
+production(application.properties): heroku tomcat + mysql hostgator  
+
+# LOCAL ENVIROMENT 
+
+5. `./mvmw clean install`
+6. `java -jar -Dspring.profiles.active=local target/registrations-0.0.1-SNAPSHOT.jar`
+
+# DEV ENVIROMENT 
+
+1. Install Java14
+2. Up docker compose image in devops foulder.
+`docker-compose up --build`
+3. go to mysql db and create database 
+4. go to mysql db and execute data.sql for insert all data  
+5. `./mvmw clean install`
+6. `java -jar -Dspring.profiles.active=development target/registrations-0.0.1-SNAPSHOT.jar`
+
+
+# HOMOLOG ENVIROMENT 
+
+5. `./mvmw clean install`
+6. `java -jar -Dspring.profiles.active=homolog target/registrations-0.0.1-SNAPSHOT.jar`
 
 # Using
 
