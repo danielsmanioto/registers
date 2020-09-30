@@ -65,6 +65,7 @@ http://localhost:8080/products/list
 # References
 
 1. https://spring.io/guides/gs/accessing-data-mysql/
-2. https://www.appsdeveloperblog.com/spring-security-default-username-password-3. role/#:~:text=Add%20Spring%20Security&text=The%20default%20username%20is%3A%20user,Spring%20Boot%20project%20is%20starting.
+2. https://www.appsdeveloperblog.com/spring-security-default-username-password-
+3. role/#:~:text=Add%20Spring%20Security&text=The%20default%20username%20is%3A%20user,Spring%20Boot%20project%20is%20starting.
 4. https://www.javaguides.net/2019/04/spring-boot-thymeleaf-crud-example-tutorial.html
 5. https://github.com/RameshMF/springboot-thymeleaf-crud-tutorial
