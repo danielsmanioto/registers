@@ -44,6 +44,13 @@ this projecs is only a monolitic system to registers and mantain all data
 1. `./mvmw clean install`
 2. `java -jar -Dspring.profiles.active=homolog target/registrations-0.0.1-SNAPSHOT.jar`
 
+# PRODUCTION ENVIROMENT
+
+1. App Heroku
+2. App on Hostgator 
+
+https://dsmanioto-registera.herokuapp.com/
+
 # Using
 
 1. Home and first test
