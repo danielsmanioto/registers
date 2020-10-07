@@ -1,0 +1,8 @@
+ssh -i "daniel.pem" ec2-user@ec2-3-22-186-245.us-east-2.compute.amazonaws.com
+
+scp -i daniel.pem registrations.jar ec2-user@ec2-3-22-186-245.us-east-2.compute.amazonaws.com:~/registrations.jar 
+--
+
+Install jdk14
+
+https://computingforgeeks.com/install-oracle-java-openjdk-14-on-centosfedora-linux/

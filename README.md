@@ -44,12 +44,22 @@ this projecs is only a monolitic system to registers and mantain all data
 1. `./mvmw clean install`
 2. `java -jar -Dspring.profiles.active=homolog target/registrations-0.0.1-SNAPSHOT.jar`
 
-# PRODUCTION ENVIROMENT
+# PRODUCTION ENVIROMENT Heroku 
 
 1. App Heroku
 2. App on Hostgator 
 
+
 https://dsmanioto-registera.herokuapp.com/
+
+# PRODUCTION ENVIROMENT AWS 
+
+`java -jar -Dspring.profiles.active=production target/registrations-0.0.1-SNAPSHOT.jar`
+
+1. App AWS
+2. App on Hostgator 
+
+http://ec2-3-22-186-245.us-east-2.compute.amazonaws.com:8080/
 
 # Using
 
