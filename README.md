@@ -16,11 +16,11 @@ this projecs is only a monolitic system to registers and mantain all data
 
 # Project Architecture 
 
-<img src="img/registers_c4.png"/>
+<img src="docs/registers_c4.png"/>
 
 # Enviroments 
 
-<img src="img/enviroments.png"/>
+<img src="docs/enviroments.png"/>
 
 # LOCAL ENVIROMENT 
 
