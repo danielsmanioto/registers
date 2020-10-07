@@ -78,6 +78,17 @@ http://localhost:8080/products/list
 
 1. https://travis-ci.com/
 
+# SCM
+
+<ul>
+  <li>Use gitflow https://www.atlassian.com/git/tutorials/comparing-workflows/gitflow-workflow</li>
+  <li>master:</li>
+  <li>develop:</li>
+  <li>feature:</li>
+  <li>release:</li>
+  <li>bugfix:</li>
+</ul>
+
 # References
 
 1. https://spring.io/guides/gs/accessing-data-mysql/
