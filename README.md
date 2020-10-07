@@ -14,14 +14,13 @@ this projecs is only a monolitic system to registers and mantain all data
     <li>Docker / Clouds </li>
 </ul>
 
+# Project Architecture 
+
+<img src="img/registers_c4.png"/>
+
 # Enviroments 
 
-<ul>
-  <li>local : jar / tomcat + h2 database</li>
-  <li>development : jar / tomcat + docker with mysql</li>
-  <li>homolog: java / tomvcat local + mysql aws </li>
-  <li>production(application.properties): heroku tomcat + mysql hostgator</li> 
-</ul>
+<img src="img/enviroments.png"/>
 
 # LOCAL ENVIROMENT 
 
