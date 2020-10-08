@@ -5,21 +5,22 @@ this projecs is only a monolitic system to registers and mantain all data
 
 # Tecnologies
 <ul>
-    <li>Spring/Spring boot/Spring security</li>
-    <li>Java14</li>
+    <li>Spring / Spring Boot/Spring Security</li>
+    <li>Java14, Maven</li>
     <li>Monolitic application</li>
-    <li>Thymeleaf </li>
-    <li>MySQL Database</li>
+    <li>Thymeleaf</li>
+    <li>MySQL Database / H2DB</li>
     <li>Bycrpt </li>
+    <li>Docker / Clouds </li>
 </ul>
 
+# Project Architecture 
+
+<img src="docs/registers_c4.png"/>
 
 # Enviroments 
 
-local : jar / tomcat + h2 database
-development : jar / tomcat + docker with mysql
-homolog: java / tomvcat local + mysql aws 
-production(application.properties): heroku tomcat + mysql hostgator  
+<img src="docs/enviroments.png"/>
 
 # LOCAL ENVIROMENT 
 
@@ -42,6 +43,23 @@ production(application.properties): heroku tomcat + mysql hostgator
 1. `./mvmw clean install`
 2. `java -jar -Dspring.profiles.active=homolog target/registrations-0.0.1-SNAPSHOT.jar`
 
+# PRODUCTION ENVIROMENT Heroku 
+
+1. App Heroku
+2. App on Hostgator 
+
+
+https://dsmanioto-registera.herokuapp.com/
+
+# PRODUCTION ENVIROMENT AWS 
+
+`java -jar -Dspring.profiles.active=production target/registrations-0.0.1-SNAPSHOT.jar`
+
+1. App AWS
+2. App on Hostgator 
+
+http://ec2-3-22-186-245.us-east-2.compute.amazonaws.com:8080/
+
 # Using
 
 1. Home and first test
@@ -58,11 +76,23 @@ http://localhost:8080/products/list
 
 # CI & CD
 
-https://travis-ci.com/
+1. https://travis-ci.com/
+
+# SCM
+
+<ul>
+  <li>Use gitflow https://www.atlassian.com/git/tutorials/comparing-workflows/gitflow-workflow</li>
+  <li>master:</li>
+  <li>develop:</li>
+  <li>feature:</li>
+  <li>release:</li>
+  <li>bugfix:</li>
+</ul>
 
 # References
 
-https://spring.io/guides/gs/accessing-data-mysql/
-https://www.appsdeveloperblog.com/spring-security-default-username-password-role/#:~:text=Add%20Spring%20Security&text=The%20default%20username%20is%3A%20user,Spring%20Boot%20project%20is%20starting.
-https://www.javaguides.net/2019/04/spring-boot-thymeleaf-crud-example-tutorial.html
-https://github.com/RameshMF/springboot-thymeleaf-crud-tutorial
+1. https://spring.io/guides/gs/accessing-data-mysql/
+2. https://www.appsdeveloperblog.com/spring-security-default-username-password-
+3. role/#:~:text=Add%20Spring%20Security&text=The%20default%20username%20is%3A%20user,Spring%20Boot%20project%20is%20starting.
+4. https://www.javaguides.net/2019/04/spring-boot-thymeleaf-crud-example-tutorial.html
+5. https://github.com/RameshMF/springboot-thymeleaf-crud-tutorial
