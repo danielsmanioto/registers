@@ -18,6 +18,10 @@ this projecs is only a monolitic system to registers and mantain all data
 
 <img src="docs/registers_c4.png"/>
 
+# Monolithic Architecture
+<img src="docs/monolithic_architecture.png"/>
+
+
 # Enviroments 
 
 <img src="docs/enviroments.png"/>
