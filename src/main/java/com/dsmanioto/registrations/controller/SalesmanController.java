@@ -1,6 +1,5 @@
 package com.dsmanioto.registrations.controller;
 
-import com.dsmanioto.registrations.controller.dto.ProductDTO;
 import com.dsmanioto.registrations.controller.dto.SalesmanDTO;
 import com.dsmanioto.registrations.service.SalesmanService;
 import org.springframework.beans.factory.annotation.Autowired;
