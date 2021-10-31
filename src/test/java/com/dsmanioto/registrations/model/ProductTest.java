@@ -5,10 +5,10 @@ import org.junit.jupiter.api.Test;
 
 import java.math.BigDecimal;
 
-public class ProductTest {
+class ProductTest {
 
     @Test
-    public void validateFields() {
+    void validateFields() {
         Product product = Product.builder()
                 .id(1L)
                 .name("Coca cola 2l")

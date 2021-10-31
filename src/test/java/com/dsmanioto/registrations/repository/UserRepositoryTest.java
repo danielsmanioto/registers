@@ -14,7 +14,7 @@ import java.util.List;
 @ExtendWith(SpringExtension.class)
 @DataJpaTest
 @ActiveProfiles("local")
-public class UserRepositoryTest {
+class UserRepositoryTest {
 
     private final UserRepository repository;
 

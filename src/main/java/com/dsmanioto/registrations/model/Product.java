@@ -4,7 +4,7 @@ package com.dsmanioto.registrations.model;
 import lombok.*;
 
 import javax.persistence.*;
-import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 import java.math.BigDecimal;
 
 @ToString
@@ -21,10 +21,10 @@ public class Product {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-    @NotEmpty(message = "Nome do produto é obrigatório")
+    @NotNull(message = "Nome do produto é obrigatório")
     private String name;
 
-    @NotEmpty(message = "preço do produto é obrigatório")
+    @NotNull(message = "preço do produto é obrigatório")
     private BigDecimal price;
 
     @ManyToOne

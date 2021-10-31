@@ -3,10 +3,10 @@ package com.dsmanioto.registrations.model;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
-public class UserRegTest {
+class UserRegTest {
 
     @Test
-    public void validateFields() {
+    void validateFields() {
         UserReg user = UserReg.builder()
                 .login("daniel")
                 .password("12345")

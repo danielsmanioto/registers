@@ -15,7 +15,7 @@ import java.util.List;
 
 @ActiveProfiles("local")
 @SpringBootTest
-public class SalesmanServiceTest {
+class SalesmanServiceTest {
 
     @InjectMocks
     private SalesmanService service;

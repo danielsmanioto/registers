@@ -6,6 +6,7 @@ import com.dsmanioto.registrations.util.CurrentSession;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
+import org.springframework.validation.annotation.Validated;
 
 import java.util.List;
 import java.util.Objects;
@@ -13,6 +14,7 @@ import java.util.Objects;
 @Slf4j
 @Service
 @RequiredArgsConstructor
+@Validated
 public class ProductService {
 
     private final ProductRepository repository;
@@ -22,6 +24,7 @@ public class ProductService {
         if (Objects.isNull(product.getUserReg())) {
             product.setUserReg(currentSession.getUserReg());
         }
+
         repository.save(product);
 
         log.info("Product save as success {}", product);

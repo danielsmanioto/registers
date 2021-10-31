@@ -3,10 +3,10 @@ package com.dsmanioto.registrations.model;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
-public class SalemanTest {
+class SalemanTest {
 
     @Test
-    public void validateFields() {
+    void validateFields() {
         Salesman salesman = Salesman.builder()
                 .id(1L)
                 .name("Daniel")

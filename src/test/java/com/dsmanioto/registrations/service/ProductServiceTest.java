@@ -1,7 +1,9 @@
 package com.dsmanioto.registrations.service;
 
 import com.dsmanioto.registrations.model.Product;
+import com.dsmanioto.registrations.model.UserReg;
 import com.dsmanioto.registrations.repository.ProductRepository;
+import com.dsmanioto.registrations.util.CurrentSession;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.mockito.BDDMockito;
@@ -24,9 +26,20 @@ public class ProductServiceTest {
     @Mock
     private ProductRepository repository;
 
+    @Mock
+    private CurrentSession currentSession;
+
     @Test
     public void validateSave() {
+        BDDMockito.when(currentSession.getUserReg()).thenReturn(criarUser());
         service.save(createProduct());
+    }
+
+    private UserReg criarUser() {
+        return UserReg.builder()
+                .admin(true)
+                .login("daniel")
+                .build();
     }
 
     @Test

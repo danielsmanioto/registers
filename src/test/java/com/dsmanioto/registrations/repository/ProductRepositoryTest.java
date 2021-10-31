@@ -14,7 +14,7 @@ import java.math.BigDecimal;
 @ExtendWith(SpringExtension.class)
 @DataJpaTest
 @ActiveProfiles("local")
-public class ProductRepositoryTest {
+class ProductRepositoryTest {
 
     private final ProductRepository repository;
 
