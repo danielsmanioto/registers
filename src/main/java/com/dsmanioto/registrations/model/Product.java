@@ -1,18 +1,9 @@
 package com.dsmanioto.registrations.model;
 
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.EqualsAndHashCode;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
-import lombok.ToString;
+import lombok.*;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.math.BigDecimal;
 
 @ToString
@@ -33,4 +24,7 @@ public class Product {
 
     private BigDecimal price;
 
+    @ManyToOne
+    @JoinColumn(name = "login")
+    private UserReg userReg;
 }
