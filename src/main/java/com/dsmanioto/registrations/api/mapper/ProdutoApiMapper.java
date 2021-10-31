@@ -5,6 +5,8 @@ import com.dsmanioto.registrations.model.Product;
 import lombok.AccessLevel;
 import lombok.NoArgsConstructor;
 
+import java.util.Objects;
+
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
 public class ProdutoApiMapper {
 
@@ -14,7 +16,7 @@ public class ProdutoApiMapper {
                 .id(product.getId())
                 .name(product.getName())
                 .price(product.getPrice())
-                .userLogin(product.getUserReg().getLogin())
+                .userLogin(Objects.nonNull(product.getUserReg()) ? product.getUserReg().getLogin() : null)
                 .build();
     }
 
